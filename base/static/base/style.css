@@ -1,13 +1,24 @@
+:root {
+
+  --color1:#0d1b2a; 
+  --color2:#1b263b; 
+  --color3:#415a77; 
+  --color4:#778da9; 
+  --color5:#e0e1dd; 
+
+}
+
+
 h1  {
   font-family:monospace;
-    color: #c9ada7;
+    color: var(--color4);
     margin-left:2%;
     width: 100%;
 }
 
 p {
     font-family:monospace;
-    color: #c9ada7;
+    color: var(--color4);
     font-size: 1.40em;
     
 }
@@ -32,9 +43,9 @@ p {
   margin-top:15px;
   margin-bottom:0;
   width:150px;
-  max-width:95%;
+  max-width:40%;
   vertical-align: top;
-  background-color:#9a8c98;
+  background-color: var(--color3);
   padding:15px;
   border-radius: 9px;
   flex-grow: 1;
@@ -48,7 +59,7 @@ p {
 
   max-width:100%;
   vertical-align: top;
-  background-color:#4a4e69;
+  background-color: var(--color2);
   padding:15px;
   border-radius: 9px;
   flex-grow: 1;
@@ -69,11 +80,11 @@ p {
 }
 
 .biotext {
-    color: #22223b;
+    color: var(--color1);
 }
 
 body {
-  background: #22223b
+  background: var(--color1)
 }
 
 .disp {
@@ -84,12 +95,16 @@ body {
     margin-left:2%
   }
 
-  a {
+  li {
+    color: var(--color4);
+  }
+
+  li a {
     font-family:monospace;
     display: inline-block;
     padding: 5px;
     font-size: 1.35em;
-    color: #c9ada7;
+    color: var(--color4);
   }
 
   ul.topnav {
@@ -98,7 +113,7 @@ body {
     margin: 10px;
     padding: 0;
     overflow: hidden;
-    background: #c9ada7;
+    background: var(--color4);;
   }
   
   ul.topnav li {float: left;}
@@ -106,18 +121,27 @@ body {
   ul.topnav li a {
     font-size: 1.45em;
     display: block;
-    color: #22223b;
+    color: var(--color1);
     text-align: center;
     padding: 5px 16px;
     text-decoration: none;
   }
   
-  ul.topnav li a:hover:not(.active) {background-color: #9a8c98;}
-  ul.topnav li a.active {background-color: #9a8c98;}
+  ul.topnav li a:hover:not(.active) {background-color: var(--color3);}
+  ul.topnav li a.active {background-color: var(--color3);}
   
   ul.topnav li.right {float: right;}
   
   @media screen and (max-width: 600px) {
     ul.topnav li.right, 
     ul.topnav li {float: none;}
+  }
+  ul {
+    list-style: none;
+  }
+  .social {
+    margin-bottom:5px;
+    vertical-align:middle;
+    height: 1em;
+    margin-right: 10px;
   }
