@@ -27,6 +27,14 @@ p {
   border-radius: 9px;
 }
 
+pre {
+  white-space: pre-wrap;       
+  white-space: -moz-pre-wrap;  
+  white-space: -pre-wrap;      
+  white-space: -o-pre-wrap;   
+  word-wrap: break-word;       
+}
+
 .info {
   margin:1%;
   margin-top:0;
@@ -36,6 +44,9 @@ p {
   vertical-align: top;
   padding:15px;
   border-radius: 9px;
+  font-family:monospace;
+  color: var(--color4);
+  font-size: 1.40em;
 }
 
 .bio {
@@ -81,6 +92,13 @@ p {
 
 .biotext {
     color: var(--color1);
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.nametext {
+   color: var(--color1);
+   text-align: center;
 }
 
 body {
@@ -113,7 +131,7 @@ body {
     margin: 10px;
     padding: 0;
     overflow: hidden;
-    background: var(--color4);;
+    background: var(--color4);
   }
   
   ul.topnav li {float: left;}
@@ -138,6 +156,7 @@ body {
   }
   ul {
     list-style: none;
+    padding:5px;
   }
   .social {
     margin-bottom:5px;

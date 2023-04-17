@@ -11,41 +11,41 @@ from django.views import generic
 from django.views.generic.base import TemplateView
 
 class IndexView(TemplateView):
+
+    infofile = open("base/static/base/infotext","r")
+    infotext = infofile.read()
+    infofile.close()
+
     template_name = "base/index.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['name'] = "Otto Petäjä"
+        context['bio'] = "Developer"
+        context['info'] = self.infotext
+        context["ghlink"] = "https://github.com/ottop"
+        context["itchlink"] = "https://ottop.itch.io/"
+        context["gplink"] = "https://play.google.com/store/apps/developer?id=ottop"
+        context["emailtext"] = "ottop.contact@gmail.com"
+        context["emaillink"] = "mailto:ottop.contact@gmail.com"
+        context["lilink"] = "https://www.linkedin.com/in/otto-petaja/"
+        
+        return context
 
-class DetailView(generic.DetailView):
-    model = Question
-    template_name = "base/detail.html"
+class ProjectView(TemplateView):
 
-    def get_queryset(self):
-        """
-        Excludes any questions that aren't published yet.
-        """
-        return Question.objects.filter(pub_date__lte=timezone.now())
+    template_name = "base/projects.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
+        context['project1name'] = "Shell Jump Go"
 
-class ResultsView(generic.DetailView):
-    model = Question
-    template_name = "base/results.html"
+        context['project1link1'] = "https://github.com/ottop/Shell_Jump_Go"
+        context['project1link1name'] = "GitHub"
 
-def vote(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    try:
-        selected_choice = question.choice_set.get(pk=request.POST["choice"])
-    except (KeyError, Choice.DoesNotExist):
-        # Redisplay the question voting form.
-        return render(
-            request,
-            "base/detail.html",
-            {
-                "question": question,
-                "error_message": "You didn't select a choice.",
-            },
-        )
-    else:
-        selected_choice.votes += 1
-        selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return HttpResponseRedirect(reverse("base:results", args=(question.id,)))
+        context['project1link2'] = "https://ottop.itch.io/shell-jump-go"
+        context['project1link2name'] = "Itch.io"
+
+        context['project1link3'] = "https://play.google.com/store/apps/details?id=org.ottop.Shell_Jump_Go"
+        context['project1link3name'] = "Google Play"
+        
+        return context
