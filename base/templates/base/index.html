@@ -14,12 +14,13 @@
 <ul class="topnav">
     <li><a class="active" href="">About Me</a></li>
     <li><a href="projects">My Projects</a></li>
+    <li><a href="/experience">My Experience</a></li>
     <li class = "right"><a href="https://github.com/ottop/ottop_website" target="_blank" rel="noopener noreferrer">Website Source Code</a></li>
 </ul>
 
 <div class="row disp">
 <div class="bio">
-<img class = "profilepic" src="{% static 'base/images/profilepic.jpg' %}" alt="LigmaJ69" width="100%"><p class = "nametext">{{name}} </p> <p class="biotext">{{bio}}</p>
+<img class = "profilepic" src="{% static 'base/images/profilepic.jpg' %}" alt="Image No Workie" width="100%"><p class = "nametext">{{name}} </p> <p class="biotext">{{bio}}</p>
 </div>
     <pre class = "info">{{info}}</pre>
 </div>
@@ -28,9 +29,9 @@
     <h1>Links to my Stuff</h1>
     <div class = "box">
     <ul>
-        <li><a href="{{ghlink}}" target="_blank" rel="noopener noreferrer"><img class="social" src="{% static 'base/images/github-mark-white.svg' %}"></img>My GitHub</a></li>
-        <li><a href="{{itchlink}}" target="_blank" rel="noopener noreferrer"><img class="social" src="{% static 'base/images/itchio-textless-white.svg' %}"></img>My Itch.io</a></li>
-        <li><a href="{{gplink}}" target="_blank" rel="noopener noreferrer"><img class="social" src="{% static 'base/images/play.svg' %}"></img>My Google Play</a></li>
+        {% for link in stufflinks %}
+        <li><a href = {{link.thing_link}}>{{link.thing_text}}</a></li>
+        {% endfor %}
       </ul> 
     </div>
 </div>
@@ -39,9 +40,10 @@
     <h1>Contact Me</h1>
     <div class = "box">
     <ul>
-        <li style="margin-bottom:10px;"> <img class="social" src="{% static 'base/images/mail.svg' %}"><a href="{{emaillink}}">{{emailtext}}</a></li>
-        <li><a href="{{lilink}}" target="_blank" rel="noopener noreferrer"><img class="social" src="{% static 'base/images/In-White-26.png' %}"></img>My LinkedIn</a></li>
-      </ul> 
+        {% for link in contactlinks %}
+        <li><a href = {{link.contact_link}}>{{link.contact_text}}</a></li>
+        {% endfor %}
+    </ul> 
     </div>
 </div>
 </div>

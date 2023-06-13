@@ -4,48 +4,53 @@ from django.utils import timezone
 # Create your views here.
 
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Question, Choice
+from .models import Project,StuffLink, ContactLink, InfoText, ProfileInfo,Experience
 from django.template import loader
 from django.urls import reverse
 from django.views import generic
 from django.views.generic.base import TemplateView
 
 class IndexView(TemplateView):
+    stufflinks = StuffLink.objects.all()
+    contactlinks = ContactLink.objects.all()
 
-    infofile = open("base/static/base/infotext","r")
-    infotext = infofile.read()
-    infofile.close()
+    profile = ProfileInfo.objects.first()
+
+    infotext = InfoText.objects.first()
 
     template_name = "base/index.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['name'] = "Otto Petäjä"
-        context['bio'] = "Developer"
+        context['name'] = self.profile.name
+        context['bio'] = self.profile.bio
         context['info'] = self.infotext
-        context["ghlink"] = "https://github.com/ottop"
-        context["itchlink"] = "https://ottop.itch.io/"
-        context["gplink"] = "https://play.google.com/store/apps/developer?id=ottop"
-        context["emailtext"] = "ottop.contact@gmail.com"
-        context["emaillink"] = "mailto:ottop.contact@gmail.com"
-        context["lilink"] = "https://www.linkedin.com/in/otto-petaja/"
+        context["stufflinks"] = self.stufflinks
+        context["contactlinks"] = self.contactlinks
         
         return context
 
 class ProjectView(TemplateView):
 
+    qs = Project.objects.all()
+
     template_name = "base/projects.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['project1name'] = "Shell Jump Go"
+        context["projects"] = self.qs
+        
+        
+        return context
 
-        context['project1link1'] = "https://github.com/ottop/Shell_Jump_Go"
-        context['project1link1name'] = "GitHub"
+class ExperienceView(TemplateView):
 
-        context['project1link2'] = "https://ottop.itch.io/shell-jump-go"
-        context['project1link2name'] = "Itch.io"
+    qs = Experience.objects.all()
 
-        context['project1link3'] = "https://play.google.com/store/apps/details?id=org.ottop.Shell_Jump_Go"
-        context['project1link3name'] = "Google Play"
+    template_name = "base/experiences.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["experiences"] = self.qs
+        
         
         return context
