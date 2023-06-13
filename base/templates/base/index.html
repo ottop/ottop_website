@@ -7,7 +7,7 @@
 
 <html>
 <head>
-<title>This is the home page</title>
+<title>About Me</title>
 </head>
 <body>
   
@@ -20,7 +20,7 @@
 
 <div class="row disp">
 <div class="bio">
-<img class = "profilepic" src="{% static 'base/images/profilepic.jpg' %}" alt="Image No Workie" width="100%"><p class = "nametext">{{name}} </p> <p class="biotext">{{bio}}</p>
+<img class = "profilepic" src="{% static 'base/images/profilepic.jpg' %}" alt="This should be an image." width="100%"><p class = "nametext">{{name}} </p> <p class="biotext">{{bio}}</p>
 </div>
     <pre class = "info">{{info}}</pre>
 </div>
@@ -30,7 +30,7 @@
     <div class = "box">
     <ul>
         {% for link in stufflinks %}
-        <li><a href = {{link.thing_link}}>{{link.thing_text}}</a></li>
+        <li><a href = {{link.thing_link}} target="_blank" rel="noopener noreferrer">{{link.thing_text}}</a></li>
         {% endfor %}
       </ul> 
     </div>
@@ -41,7 +41,7 @@
     <div class = "box">
     <ul>
         {% for link in contactlinks %}
-        <li><a href = {{link.contact_link}}>{{link.contact_text}}</a></li>
+        <li><a href = {{link.contact_link}} target="_blank" rel="noopener noreferrer">{{link.contact_text}}</a></li>
         {% endfor %}
     </ul> 
     </div>

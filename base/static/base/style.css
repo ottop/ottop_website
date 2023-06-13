@@ -23,6 +23,10 @@ p {
     
 }
 
+.itemname {
+  margin-left:0%;
+}
+
 .profilepic {
   border-radius: 9px;
 }

@@ -44,7 +44,7 @@ class ProjectView(TemplateView):
 
 class ExperienceView(TemplateView):
 
-    qs = Experience.objects.all()
+    qs = Experience.objects.all().order_by("-startdate")
 
     template_name = "base/experiences.html"
     def get_context_data(self, **kwargs):
