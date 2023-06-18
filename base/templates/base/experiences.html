@@ -23,22 +23,27 @@
     <h1>My Experience</h1>
     
     <ul>
+
         {% for experience in experiences %}
+
         <li>
             <div class = "box">
-        <h1 class="itemname">{{experience.title}}</h1>
-        <p style="font-size:1.3em;color:#5e7694">{{experience.exptype}}</p>
-        <p style="font-size:1.3em;color:#5e7694">{{experience.showStartTime}} -> {{experience.showEndTime}}</p>
+                <h1 class="itemname">{{experience.title}} - {{experience.company}}</h1>
+
+                <p style="font-size:1.3em;color:#5e7694">{{experience.exptype}}</p>
+
+                <p style="font-size:1.3em;color:#5e7694">{{experience.showStartTime}} -> {{experience.showEndTime}}</p>
         
-        <pre><p style="font-size:1.5em;line-height:1.1;">{{experience.description}}</p></pre>
-    </div>
+                <pre><p style="font-size:1.5em;line-height:1.1;">{{experience.description}}</p></pre>
+            </div>
         </li>
+
         {% endfor %}
+
       </ul> 
 
-</div></div>
-
-
+</div>
+</div>
 
 </body>
 </html>

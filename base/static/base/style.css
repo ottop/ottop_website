@@ -1,13 +1,10 @@
 :root {
-
   --color1:#0d1b2a; 
   --color2:#1b263b; 
   --color3:#415a77; 
   --color4:#778da9; 
   --color5:#e0e1dd; 
-
 }
-
 
 h1  {
   font-family:monospace;
@@ -19,8 +16,7 @@ h1  {
 p {
     font-family:monospace;
     color: var(--color4);
-    font-size: 1.40em;
-    
+    font-size: 1.4em; 
 }
 
 .itemname {
@@ -154,17 +150,12 @@ body {
   
   ul.topnav li.right {float: right;}
   
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 700px) {
     ul.topnav li.right, 
     ul.topnav li {float: none;}
   }
+
   ul {
     list-style: none;
     padding:5px;
-  }
-  .social {
-    margin-bottom:5px;
-    vertical-align:middle;
-    height: 1em;
-    margin-right: 10px;
   }

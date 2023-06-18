@@ -1,17 +1,10 @@
-from django.shortcuts import get_object_or_404,render
-from django.utils import timezone
-
-# Create your views here.
-
-from django.http import HttpResponse, HttpResponseRedirect
-from .models import Project,StuffLink, ContactLink, InfoText, ProfileInfo,Experience
-from django.template import loader
-from django.urls import reverse
-from django.views import generic
+from .models import Project,StuffLink, ContactLink, InfoText, ProfileInfo, Experience
 from django.views.generic.base import TemplateView
 
 class IndexView(TemplateView):
+
     stufflinks = StuffLink.objects.all()
+
     contactlinks = ContactLink.objects.all()
 
     profile = ProfileInfo.objects.first()
@@ -19,8 +12,12 @@ class IndexView(TemplateView):
     infotext = InfoText.objects.first()
 
     template_name = "base/index.html"
+
     def get_context_data(self, **kwargs):
+
         context = super().get_context_data(**kwargs)
+        
+        context['image'] = self.profile.image
         context['name'] = self.profile.name
         context['bio'] = self.profile.bio
         context['info'] = self.infotext
@@ -34,11 +31,12 @@ class ProjectView(TemplateView):
     qs = Project.objects.all()
 
     template_name = "base/projects.html"
+
     def get_context_data(self, **kwargs):
+
         context = super().get_context_data(**kwargs)
 
-        context["projects"] = self.qs
-        
+        context["projects"] = self.qs  
         
         return context
 
@@ -47,10 +45,11 @@ class ExperienceView(TemplateView):
     qs = Experience.objects.all().order_by("-startdate")
 
     template_name = "base/experiences.html"
+
     def get_context_data(self, **kwargs):
+
         context = super().get_context_data(**kwargs)
 
         context["experiences"] = self.qs
-        
         
         return context

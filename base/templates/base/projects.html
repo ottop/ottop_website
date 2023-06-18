@@ -24,23 +24,32 @@
     
     <ul>
         {% for project in projects %}
+
         <li>
             <div class = "box">
-        <h1 class="itemname">{{project.project_name}}</h1>
-        <pre><p style="font-size:1.5em;line-height:1.1;color:#5e7694;">{{project.description}}</p></pre>
-        <ul>
-        {% for link in project.projects.all %}
-        <li><a href = {{link}} target="_blank" rel="noopener noreferrer">{{link.link_text}}</a></li>
-        {% endfor %}
-        </ul>
-    </div>
+                <h1 class="itemname">{{project.project_name}}</h1>
+
+                <pre><p style="font-size:1.5em;line-height:1.1;color:#5e7694;">{{project.description}}</p></pre>
+
+                <ul>
+
+                    {% for link in project.projects.all %}
+
+                    <li><a href = {{link.project_link}} target="_blank" rel="noopener noreferrer">{{link.link_text}}</a></li>
+                
+                    {% endfor %}
+
+                </ul>
+
+            </div>
         </li>
+
         {% endfor %}
+
       </ul> 
 
-</div></div>
-
-
+</div>
+</div>
 
 </body>
 </html>
