@@ -15,32 +15,32 @@
     <li><a href="/">About Me</a></li>
     <li><a href="/projects">My Projects</a></li>
     <li><a class="active" href="/experience">My Experience</a></li>
-    <li class = "right"><a href="https://codeberg.org/ottoptj/ottop_website" target="_blank" rel="noopener noreferrer">Website Source Code</a></li>
+    <li class = "right"><a href={{sourcelink} target="_blank" rel="noopener noreferrer">Website Source Code</a></li>
 </ul>
 
 <div class="row disp">
-<div class = "content">
-    <h1>My Experience</h1>
+<div class = "content" style="margin-top: 0%;">
+    <ul style="margin-top: 0%;">
+    {% for category, experiences in expdictionary.items %}
+    <li style="margin-bottom: 3%;">
+        <h1>{{category}}</h1>
+        <ul style="padding:0px"> 
+            {% for experience in experiences %}
+            <li>
+                <div class = "box">
+                    <h1 class="itemname">{{experience.title}} - {{experience.company}}</h1>
     
-    <ul>
-
-        {% for experience in experiences %}
-
-        <li>
-            <div class = "box">
-                <h1 class="itemname">{{experience.title}} - {{experience.company}}</h1>
-
-                <p style="font-size:1.3em;color:#5e7694">{{experience.exptype}}</p>
-
-                <p style="font-size:1.3em;color:#5e7694">{{experience.showStartTime}} -> {{experience.showEndTime}}</p>
-        
-                <pre><p style="font-size:1.5em;line-height:1.1;">{{experience.description}}</p></pre>
-            </div>
-        </li>
-
-        {% endfor %}
-
-      </ul> 
+                    <p style="font-size:1.3em;color:#5e7694">{{experience.showStartTime}} -> {{experience.showEndTime}}</p>
+            
+                    <pre><p style="font-size:1.5em;line-height:1.1;">{{experience.description}}</p></pre>
+                </div>
+            </li>
+            {% endfor %}
+    
+          </ul> 
+    </li>
+    {% endfor %}
+    </ul>
 
 </div>
 </div>

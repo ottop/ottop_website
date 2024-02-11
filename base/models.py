@@ -1,13 +1,21 @@
 from django.db import models
 
+class ProjectCategory(models.Model):
+    category = models.CharField(max_length=200)
+    sort_id = models.CharField(max_length=3)
+    def __str__(self):
+        return self.category
+
 class Project(models.Model):
+    projecttype = models.ForeignKey(ProjectCategory, on_delete=models.CASCADE,related_name="projecttypes",blank=True,null=True)
     project_name = models.CharField(max_length=200)
     description = models.TextField()
+    sort_id = models.CharField(max_length=3)
     def __str__(self):
         return self.project_name
 
 class ProjectLink(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE,related_name="projects")
+    project = models.ForeignKey(Project, on_delete=models.CASCADE,related_name="projects",blank=True,null=True)
     project_link = models.CharField(max_length=200)
     link_text = models.CharField(max_length=200)
     def __str__(self):
@@ -38,8 +46,14 @@ class ProfileInfo(models.Model):
     def __str__(self):
         return self.name
 
+class ExperienceCategory(models.Model):
+    category = models.CharField(max_length=200)
+    sort_id = models.CharField(max_length=3)
+    def __str__(self):
+        return self.category
+
 class Experience(models.Model):
-    exptype = models.CharField(max_length=200,choices=[("Full-Time","Full-Time"),("Part-Time","Part-Time"),("Volunteer","Volunteer")])
+    exptype = models.ForeignKey(ExperienceCategory, on_delete=models.CASCADE,related_name="experiencetypes",blank=True,null=True)
     title = models.CharField(max_length=200)
     company = models.CharField(max_length=200)
     startdate = models.DateField()
@@ -52,4 +66,7 @@ class Experience(models.Model):
     def __str__(self):
         return (self.title + " - " + self.company)
 
-    
+class SourceLink(models.Model):
+    link = models.CharField(max_length=200)
+    def __str__(self):
+        return self.link

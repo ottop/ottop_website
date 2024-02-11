@@ -1,4 +1,4 @@
-from .models import Project,StuffLink, ContactLink, InfoText, ProfileInfo, Experience
+from .models import Project, ProjectCategory, StuffLink, ContactLink, InfoText, ProfileInfo, Experience, ExperienceCategory,SourceLink
 from django.views.generic.base import TemplateView
 
 class IndexView(TemplateView):
@@ -10,6 +10,8 @@ class IndexView(TemplateView):
     profile = ProfileInfo.objects.first()
 
     infotext = InfoText.objects.first()
+
+    sourcecode = SourceLink.objects.first()
 
     template_name = "base/index.html"
 
@@ -23,12 +25,19 @@ class IndexView(TemplateView):
         context['info'] = self.infotext
         context["stufflinks"] = self.stufflinks
         context["contactlinks"] = self.contactlinks
+        context["sourcelink"] = self.sourcecode
         
         return context
 
 class ProjectView(TemplateView):
 
-    qs = Project.objects.all()
+    categories = ProjectCategory.objects.all().order_by("sort_id")
+    projectdict = {}
+
+    for i in categories:
+        projectdict[i] = Project.objects.filter(projecttype=i).order_by("sort_id")
+
+    sourcecode = SourceLink.objects.first()
 
     template_name = "base/projects.html"
 
@@ -36,13 +45,20 @@ class ProjectView(TemplateView):
 
         context = super().get_context_data(**kwargs)
 
-        context["projects"] = self.qs  
+        context["projectdictionary"] = self.projectdict
+        context["sourcelink"] = self.sourcecode
         
         return context
 
 class ExperienceView(TemplateView):
 
-    qs = Experience.objects.all().order_by("-startdate")
+    categories = ExperienceCategory.objects.all().order_by("sort_id")
+    expdict = {}
+
+    for i in categories:
+        expdict[i] = Experience.objects.filter(exptype=i).order_by("-startdate")
+
+    sourcecode = SourceLink.objects.first()
 
     template_name = "base/experiences.html"
 
@@ -50,6 +66,7 @@ class ExperienceView(TemplateView):
 
         context = super().get_context_data(**kwargs)
 
-        context["experiences"] = self.qs
+        context ["expdictionary"] = self.expdict
+        context["sourcelink"] = self.sourcecode
         
         return context
