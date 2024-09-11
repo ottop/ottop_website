@@ -12,6 +12,6 @@ The website is built with Python and Django. It uses a basic SQLite database as 
 
 The website is designed with a few primary goals:
 
-- Display information in a clear, categorizes manner.
-- Look reasonable visaully.
+- Display information in a clear, categorized manner.
+- Look reasonable visually.
 - Be scalable enough to generally work on both, desktop and mobile devices.
