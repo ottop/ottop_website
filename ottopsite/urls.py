@@ -29,3 +29,16 @@ urlpatterns = [
     path('admin/', admin_site.urls),
     path("", include("base.urls")),
 ]
+
+"""
+admin.site.register(Project)
+admin.site.register(ProjectLink)
+admin.site.register(StuffLink)
+admin.site.register(ContactLink)
+admin.site.register(InfoText)
+admin.site.register(ProfileInfo)
+admin.site.register(Experience)
+admin.site.register(ExperienceCategory)
+admin.site.register(ProjectCategory)
+admin.site.register(SourceLink)
+"""

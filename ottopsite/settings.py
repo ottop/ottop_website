@@ -26,7 +26,7 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [".ottop.eu","127.0.0.1","129.151.196.240"]
+ALLOWED_HOSTS = [".ottop.eu",".ottop.rip","127.0.0.1","129.151.196.240"]
 
 # Application definition
 
@@ -135,4 +135,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CSRF_COOKIE_SECURE = True
 
 SESSION_COOKIE_SECURE =  True
-CSRF_TRUSTED_ORIGINS = ['https://ottop.eu']
+CSRF_TRUSTED_ORIGINS = ['https://ottop.eu', 'https://www.ottop.eu', 'https://ottop.rip', 'https://www.ottop.rip']
