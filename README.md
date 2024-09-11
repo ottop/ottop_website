@@ -15,3 +15,4 @@ The website is designed with a few primary goals:
 - Display information in a clear, categorized manner.
 - Look reasonable visually.
 - Be scalable enough to generally work on both, desktop and mobile devices.
+- Easily update information on the website without modifying code.
